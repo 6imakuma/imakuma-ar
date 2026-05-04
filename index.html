@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
+<html>
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>AR認識テスト</title>
+    <title>神社 桜巡りAR</title>
+    <!-- A-Frame と AR.js の読み込み -->
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
 
-    <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      vr-mode-ui="enabled: false">
 
-    <style>
-        body { margin:0; overflow:hidden; }
-        .guide {
-            position: fixed;
-            top: 10px;
-            width: 100%;
-            text-align: center;
-            background: rgba(255,255,255,0.9);
-            color: #000;
-            font-size: 22px;
-            font-weight: bold;
-            padding: 10px;
-            z-index: 999;
-        }
-    </style>
-</head>
-<body>
+      <!-- 各マーカーの定義 -->
 
-<div class="guide">AR認識テスト　marker1を映してください</div>
+      <!-- 桜1: 上壱ノ伍 -->
+      <a-marker type="pattern" url="marker1.patt">
+        <!-- 名前を画像で表示する場合 (name1.pngを用意) -->
+        <a-image src="name1.png" position="0 0.5 0" rotation="-90 0 0" width="2" height="1"></a-image>
+        <!-- 文字だけで表示する場合 (英語のみ) -->
+        <!-- <a-text value="Sato-zakura" position="0 0.5 0" rotation="-90 0 0" align="center" color="#FF69B4"></a-text> -->
+      </a-marker>
 
-<a-scene embedded vr-mode-ui="enabled: false" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; facingMode: environment;">
+      <!-- 桜2: 上壱ノ六 -->
+      <a-marker type="pattern" url="marker2.patt">
+        <a-image src="name2.png" position="0 0.5 0" rotation="-90 0 0" width="2" height="1"></a-image>
+      </a-marker>
 
-    <a-marker type="pattern" url="marker1.patt">
-        <a-box position="0 0.5 0" material="color: red;"></a-box>
-    </a-marker>
+      <!-- 桜3: 上弐ノ壱 -->
+      <a-marker type="pattern" url="marker3.patt">
+        <a-image src="name3.png" position="0 0.5 0" rotation="-90 0 0" width="2" height="1"></a-image>
+      </a-marker>
 
-    <a-entity camera></a-entity>
-</a-scene>
+      <!-- 桜4: 下壱ノ参 -->
+      <a-marker type="pattern" url="marker4.patt">
+        <a-image src="name4.png" position="0 0.5 0" rotation="-90 0 0" width="2" height="1"></a-image>
+      </a-marker>
 
-</body>
+      <!-- 桜5: 下弐ノ弐 -->
+      <a-marker type="pattern" url="marker5.patt">
+        <a-image src="name5.png" position="0 0.5 0" rotation="-90 0 0" width="2" height="1"></a-image>
+      </a-marker>
+
+      <!-- カメラの設定 -->
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
 </html>
