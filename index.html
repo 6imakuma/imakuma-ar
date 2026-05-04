@@ -9,73 +9,54 @@
     <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.js"></script>
 
     <style>
-        body { margin:0; overflow:hidden; font-family:serif; background:#f3f3f3; }
-        .menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255,255,255,0.96);
-            z-index: 9999;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .title {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .btn {
-            display: inline-block;
-            margin: 4px;
-            padding: 10px 14px;
-            font-size: 18px;
-            background: #ffffff;
-            border: 2px solid #444;
-            border-radius: 8px;
-            cursor: pointer;
-        }
+        body { margin:0; overflow:hidden; font-family:serif; }
         .guide {
             position: fixed;
-            bottom: 10px;
+            top: 10px;
             width: 100%;
             text-align: center;
             background: rgba(255,255,255,0.9);
             color: #000;
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
-            padding: 8px;
-            z-index: 9999;
+            padding: 10px;
+            z-index: 999;
         }
     </style>
 </head>
 <body>
 
-<div class="menu">
-    <div class="title">今熊保食神社　桜苑AR案内</div>
-    <div class="btn" onclick="showInfo('関山','上壱ノ伍','八重咲きで豪華な花をつける晩咲き桜')">上壱ノ伍</div>
-    <div class="btn" onclick="showInfo('枝垂れ桜','上壱ノ六','優雅に垂れる枝が春風に揺れる代表桜')">上壱ノ六</div>
-    <div class="btn" onclick="showInfo('松月','上弐ノ壱','淡紅色の大輪を咲かせる気品ある品種')">上弐ノ壱</div>
-    <div class="btn" onclick="showInfo('普賢象','下壱ノ参','花の中心が象の鼻のように見える珍種')">下壱ノ参</div>
-    <div class="btn" onclick="showInfo('御衣黄','下弐ノ弐','淡い黄緑色を帯びた珍しい桜の一種')">下弐ノ弐</div>
-</div>
+<div class="guide">①カメラを許可してください　②桜苑札を画面中央に映してください</div>
 
-<div class="guide">①上の番号を押してください　②桜の木へカメラを向けてください</div>
+<a-scene embedded vr-mode-ui="enabled: false" arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; facingMode: environment;">
 
-<a-scene embedded vr-mode-ui="enabled: false" arjs="sourceType: webcam; debugUIEnabled: false; facingMode: environment;">
-    <a-plane id="infoBg" position="0 0 -3" width="3.2" height="1.5" color="#ffffff" opacity="0.88" visible="false"></a-plane>
-    <a-text id="infoText" value="" color="#000" align="center" position="0 0 -2.9" width="3" visible="false"></a-text>
+    <a-marker preset="custom" type="pattern" url="marker1.patt">
+        <a-plane position="0 0.8 0" width="2.8" height="1.2" color="#ffffff" opacity="0.9"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上壱ノ伍\n関山（かんざん）\n八重咲きで豪華な花をつける晩咲き桜" color="#000" align="center" position="0 0.8 0.02" width="2.5"></a-text>
+    </a-marker>
+
+    <a-marker preset="custom" type="pattern" url="marker2.patt">
+        <a-plane position="0 0.8 0" width="2.8" height="1.2" color="#ffffff" opacity="0.9"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上壱ノ六\n枝垂れ桜\n優雅に垂れる枝が春風に揺れる代表桜" color="#000" align="center" position="0 0.8 0.02" width="2.5"></a-text>
+    </a-marker>
+
+    <a-marker preset="custom" type="pattern" url="marker3.patt">
+        <a-plane position="0 0.8 0" width="2.8" height="1.2" color="#ffffff" opacity="0.9"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上弐ノ壱\n松月（しょうげつ）\n淡紅色の大輪を咲かせる気品ある品種" color="#000" align="center" position="0 0.8 0.02" width="2.5"></a-text>
+    </a-marker>
+
+    <a-marker preset="custom" type="pattern" url="marker4.patt">
+        <a-plane position="0 0.8 0" width="2.8" height="1.2" color="#ffffff" opacity="0.9"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n下壱ノ参\n普賢象（ふげんぞう）\n花の中心が象の鼻のように見える珍種" color="#000" align="center" position="0 0.8 0.02" width="2.5"></a-text>
+    </a-marker>
+
+    <a-marker preset="custom" type="pattern" url="marker5.patt">
+        <a-plane position="0 0.8 0" width="2.8" height="1.2" color="#ffffff" opacity="0.9"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n下弐ノ弐\n御衣黄（ぎょいこう）\n淡い黄緑色を帯びた珍しい桜の一種" color="#000" align="center" position="0 0.8 0.02" width="2.5"></a-text>
+    </a-marker>
+
     <a-entity camera></a-entity>
 </a-scene>
-
-<script>
-function showInfo(name, place, desc){
-    document.querySelector('#infoBg').setAttribute('visible', true);
-    document.querySelector('#infoText').setAttribute('visible', true);
-    document.querySelector('#infoText').setAttribute('value', '今熊保食神社 桜苑案内\n' + place + '\n' + name + '\n' + desc);
-}
-</script>
 
 </body>
 </html>
