@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>今熊保食神社 桜苑AR案内</title>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <style>
+        body { margin:0; overflow:hidden; font-family:serif; }
+        .guide {
+            position: fixed;
+            top: 10px;
+            width: 100%;
+            text-align: center;
+            background: rgba(255,255,255,0.88);
+            color: #000;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+<div class="guide">①カメラを許可してください　②桜苑札を画面に映してください</div>
+
+<a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+    <!-- marker1 -->
+    <a-marker type="pattern" url="marker1.patt">
+        <a-plane position="0 1 0" rotation="-90 0 0" width="2.8" height="1.2" color="#fff" opacity="0.85"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上壱ノ伍\n関山（かんざん）\n八重咲きで豪華な花をつける晩咲き桜" color="#000" align="center" position="0 1.01 0" rotation="-90 0 0" width="2.5"></a-text>
+    </a-marker>
+
+    <!-- marker2 -->
+    <a-marker type="pattern" url="marker2.patt">
+        <a-plane position="0 1 0" rotation="-90 0 0" width="2.8" height="1.2" color="#fff" opacity="0.85"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上壱ノ六\n枝垂れ桜\n優雅に垂れる枝が春風に揺れる代表桜" color="#000" align="center" position="0 1.01 0" rotation="-90 0 0" width="2.5"></a-text>
+    </a-marker>
+
+    <!-- marker3 -->
+    <a-marker type="pattern" url="marker3.patt">
+        <a-plane position="0 1 0" rotation="-90 0 0" width="2.8" height="1.2" color="#fff" opacity="0.85"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n上弐ノ壱\n松月（しょうげつ）\n淡紅色の大輪を咲かせる気品ある品種" color="#000" align="center" position="0 1.01 0" rotation="-90 0 0" width="2.5"></a-text>
+    </a-marker>
+
+    <!-- marker4 -->
+    <a-marker type="pattern" url="marker4.patt">
+        <a-plane position="0 1 0" rotation="-90 0 0" width="2.8" height="1.2" color="#fff" opacity="0.85"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n下壱ノ参\n普賢象（ふげんぞう）\n花の中心が象の鼻のように見える珍種" color="#000" align="center" position="0 1.01 0" rotation="-90 0 0" width="2.5"></a-text>
+    </a-marker>
+
+    <!-- marker5 -->
+    <a-marker type="pattern" url="marker5.patt">
+        <a-plane position="0 1 0" rotation="-90 0 0" width="2.8" height="1.2" color="#fff" opacity="0.85"></a-plane>
+        <a-text value="今熊保食神社 桜苑案内\n下弐ノ弐\n御衣黄（ぎょいこう）\n淡い黄緑色を帯びた珍しい桜の一種" color="#000" align="center" position="0 1.01 0" rotation="-90 0 0" width="2.5"></a-text>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+</a-scene>
+
+</body>
+</html>
